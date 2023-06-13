@@ -16,7 +16,6 @@ export const useProviderAuth = () => {
       if (response.code == 200) {
         setLoggedIn(true);
         toast.success("Đăng nhập thành công");
-        await getInfo();
       } else {
         toast.error("Lỗi. Vui lòng thử lại");
         console.log(response);

@@ -18,7 +18,7 @@ const Card = ({ data }) => {
             " " +
             data.unit || 0}
         </p>
-        <p className="text-sm font-medium" w-full>
+        <p className="text-sm font-medium">
           Đơn giá:{" "}
           {data.unitPrice
             .toFixed(0)
@@ -55,15 +55,18 @@ export default function InvoiceDetail() {
   }, []);
   return (
     <ViewDetailLayout
-      title={`Tháng ${invoice?.overview?.month || ""}/${
-        invoice?.overview?.year || ""
-      }`}
-      backTo="/invoice"
+      title={`[${invoice?.overview?.roomId}] ${invoice?.overview?.roomName}`}
     >
+      <div className="flex flex-col justify-start align-center items-center w-full mb-2">
+        <p className="font-bold">
+          {`Tháng ${invoice?.overview?.month || ""}/${invoice?.overview?.year || ""
+            }`}
+        </p>
+      </div>
       {invoice?.detail?.length
         ? invoice.detail.map((item) => {
-            return <Card data={item} key={uuid().slice(0, 8)} />;
-          })
+          return <Card data={item} key={uuid().slice(0, 8)} />;
+        })
         : "Không có thông tin hoá đơn"}
     </ViewDetailLayout>
   );

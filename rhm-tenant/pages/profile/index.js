@@ -114,8 +114,8 @@ export default function Tenant() {
       >
         Đăng xuất
       </Button>
-      <div className="flex flex-col justify-start align-center w-full h-fit mt-2">
-        <p className="text-lg font-semibold w-full text-center text-primary mb-3">
+      <div className="flex flex-col justify-start align-center w-full h-fit mt-2 gap-3">
+        <p className="text-lg font-semibold w-full text-center text-primary mb-1">
           Danh sách hợp đồng
         </p>
         {
