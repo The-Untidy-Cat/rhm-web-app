@@ -20,15 +20,14 @@ export default function NewTicket() {
       setLoading(false);
       toast.success("Gửi yêu cầu thành công");
       router.push("/ticket");
-    }
-    catch (err) {
+    } catch (err) {
       setLoading(false);
       toast.error("Gửi yêu cầu thất bại! " + err?.data?.message);
-      console.log(err)
+      console.log(err);
     }
-  }
+  };
   return (
-    <ViewDetailLayout title="Yêu cầu hỗ trợ">
+    <ViewDetailLayout title="Yêu cầu hỗ trợ" backTo="/ticket">
       <Form
         name="basic"
         className="flex flex-col w-full gap-1"
@@ -36,12 +35,25 @@ export default function NewTicket() {
         onFinish={handleSubmit}
       >
         <p className="text-sm font-medium w-full">Nội dung hỗ trợ</p>
-        <Form.Item name="description"  rules={[{ required: true, message: 'Bắt buộc!' }]}>
-          <TextArea className="w-full border rounded-lg p-2 text-sm" required maxLength={48} autoSize placeholder="Tối đa 48 kí tự"/>
+        <Form.Item
+          name="description"
+          rules={[{ required: true, message: "Bắt buộc!" }]}
+        >
+          <TextArea
+            className="w-full border rounded-lg p-2 text-sm"
+            required
+            maxLength={48}
+            autoSize
+            placeholder="Tối đa 48 kí tự"
+          />
         </Form.Item>
         <Form.Item>
-          <Button htmlType="submit" className="flex justify-center aligin-center items-center gap-2 w-full text-white bg-primary rounded-lg p-2 text-sm font-semibold" >
-            <BsFillSendPlusFill/>Gửi yêu cầu
+          <Button
+            htmlType="submit"
+            className="flex justify-center aligin-center items-center gap-2 w-full text-white bg-primary rounded-lg p-2 text-sm font-semibold"
+          >
+            <BsFillSendPlusFill />
+            Gửi yêu cầu
           </Button>
         </Form.Item>
       </Form>

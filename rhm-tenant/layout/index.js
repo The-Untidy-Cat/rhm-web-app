@@ -48,7 +48,7 @@ const MobileLayout = ({ children = null, title = null }) => {
         <title>{title}</title>
       </Head>
 
-      <div className="absolute mx-auto left-0 right-0 flex h-full w-screen max-w-sm flex-col items-center justify-start align-start">
+      <div className="absolute mx-auto left-0 right-0 flex h-full w-screen max-w-md flex-col items-center justify-start align-start">
         <div className="flex justify-between align-center items-center px-3 w-full mt-3 h-20">
           <h1 className="font-bold text-primary text-2xl">{title}</h1>
           <FaUserCircle
@@ -67,17 +67,25 @@ const MobileLayout = ({ children = null, title = null }) => {
   );
 };
 
-const ViewDetailLayout = ({ children = null, title = null, navbar = true }) => {
+const ViewDetailLayout = ({
+  children = null,
+  title = null,
+  navbar = true,
+  backTo = null,
+}) => {
   const router = useRouter();
   return (
     <main className="bg-bg w-full min-h-screen h-full overflow-y-hidden">
       <Head>
         <title>{title}</title>
       </Head>
-      <div className="absolute mx-auto left-0 right-0 flex h-full w-screen max-w-sm flex-col items-center justify-start align-start">
+      <div className="absolute mx-auto left-0 right-0 flex h-full w-screen max-w-md flex-col items-center justify-start align-start">
         <div className="flex justify-start align-center items-center px-3 gap-2 w-full mt-1 h-20">
           <IoIosArrowBack
-            onClick={() => router.back()}
+            onClick={() => {
+              if (backTo) router.back();
+              else router.push(backTo);
+            }}
             className="text-2xl text-primary p-0 cursor-pointer"
           />
           <h1 className="font-bold text-primary text-lg ">{title}</h1>

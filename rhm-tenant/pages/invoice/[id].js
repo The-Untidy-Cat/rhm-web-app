@@ -58,6 +58,7 @@ export default function InvoiceDetail() {
       title={`Tháng ${invoice?.overview?.month || ""}/${
         invoice?.overview?.year || ""
       }`}
+      backTo="/invoice"
     >
       {invoice?.detail?.length
         ? invoice.detail.map((item) => {

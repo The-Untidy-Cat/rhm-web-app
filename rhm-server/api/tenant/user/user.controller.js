@@ -1,5 +1,6 @@
 const { findUser } = require("../index.service");
-
+const { update } = require("./user.service");
+const { checkEmpty } = require("../../../utils/index");
 require("dotenv").config();
 
 module.exports = {
@@ -27,6 +28,18 @@ module.exports = {
           code: 200,
           data: "Logout successfully!",
         });
+    } catch (e) {
+      next(e);
+    }
+  },
+  update: async (req, res, next) => {
+    try {
+      checkEmpty(req.body.phoneNumber, req.body.email);
+      await update(req.user, req.body);
+      return res.status(200).json({
+        code: 200,
+        message: "Cập nhật thành công",
+      });
     } catch (e) {
       next(e);
     }

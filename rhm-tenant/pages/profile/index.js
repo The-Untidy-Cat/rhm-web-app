@@ -5,11 +5,13 @@ import { useEffect, useState } from "react";
 import { useAuth } from "../../provider";
 import { Button } from "antd";
 import { v4 as uuid } from "uuid";
+import { useRouter } from "next/router";
 
 const TenantCard = ({ data }) => {
+  const router = useRouter();
   return (
-    <div className="flex justify-center align-center items-center w-full bg-bg-base shadow rounded-lg h-fit p-0">
-      <div className="flex flex-col justify-start align-center w-full p-2 h-fit">
+    <div className="flex justify-center align-center items-center w-full bg-bg-base shadow rounded-lg h-fit p-0 cursor-pointer" onClick={()=>router.push("/profile/edit")}>
+      <div className="flex flex-col justify-start align-center w-full p-2 h-fit"> 
         <p className="text-lg font-semibold w-full">{data.name || ""}</p>
         <p className="text-sm font-medium w-full">
           Mã khách thuê: {data._id || ""}
@@ -104,7 +106,7 @@ export default function Tenant() {
     getContractList();
   }, []);
   return (
-    <ViewDetailLayout title="Thông tin cá nhân" navbar={false}>
+    <ViewDetailLayout title="Thông tin cá nhân" navbar={false} backTo="/invoice">
       <TenantCard data={tenantInfo} />
       <Button
         className="w-full text-error border border-error rounded-lg font-semibold text-sm p-2"
