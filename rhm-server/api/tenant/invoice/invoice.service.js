@@ -5,7 +5,7 @@ module.exports = {
   all: async (user) => {
     try {
       const result = await sql.query(
-        `SELECT INVOICE.ID, INVOICE.STATUS_ID, INVOICE_STATUS.NAME, INVOICE.YEAR, INVOICE.MONTH, INVOICE.TOTAL_MONEY, INVOICE.MONEY_PAID
+        `SELECT INVOICE.ID, INVOICE.STATUS_ID, INVOICE_STATUS.NAME, INVOICE.YEAR, INVOICE.MONTH, INVOICE.TOTAL_MONEY, INVOICE.MONEY_PAID, ROOM.ID, ROOM.NAME
             FROM TENANT JOIN DETAIL_CONTRACT ON TENANT.ID = DETAIL_CONTRACT.TENANT_ID
             JOIN CONTRACT ON DETAIL_CONTRACT.CONTRACT_ID = CONTRACT.ID
             JOIN ROOM ON CONTRACT.ROOM_ID = ROOM.ID
@@ -25,6 +25,8 @@ module.exports = {
           month: element[4],
           totalMoney: element[5],
           moneyPaid: element[6],
+          roomId: element[7],
+          roomName: element[8]
         });
       });
       return data;
@@ -35,9 +37,10 @@ module.exports = {
   getOverviewById: async (id) => {
     try {
       const result = await sql.query(
-        `SELECT INVOICE.ID, INVOICE.STATUS_ID, INVOICE_STATUS.NAME, INVOICE.YEAR, INVOICE.MONTH, INVOICE.TOTAL_MONEY, INVOICE.MONEY_PAID
+        `SELECT INVOICE.ID, INVOICE.STATUS_ID, INVOICE_STATUS.NAME, INVOICE.YEAR, INVOICE.MONTH, INVOICE.TOTAL_MONEY, INVOICE.MONEY_PAID, ROOM.ID, ROOM.NAME
             FROM INVOICE
             JOIN INVOICE_STATUS ON INVOICE.STATUS_ID = INVOICE_STATUS.ID
+            JOIN ROOM ON ROOM.ID = INVOICE.ROOM_ID
             WHERE INVOICE.ID = :id`,
         { id: id }
       );
@@ -50,6 +53,8 @@ module.exports = {
         month: rows[0][4],
         totalMoney: rows[0][5],
         moneyPaid: rows[0][6],
+        roomId: rows[0][7],
+        roomName: rows[0][8]
       };
       return data || null;
     } catch (e) {

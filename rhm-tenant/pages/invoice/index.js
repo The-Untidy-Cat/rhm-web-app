@@ -10,8 +10,8 @@ const Card = ({ data }) => {
   return (
     <div className="flex justify-center align-center items-center w-full bg-bg-base shadow rounded-lg h-28 p-0" onClick={()=>router.push(`/invoice/${data.id}`)}>
       <div className="flex flex-col justify-start align-center w-[70rem] p-2 h-fit">
-        <p className="text-sm font-medium w-full">Năm {data.year || ""}</p>
-        <p className="text-lg font-bold w-full">Tháng {data.month || ""}</p>
+        <p className="text-lg font-bold w-full">Tháng {data.month || ""}/{data.year || ""}</p>
+        <p className="text-sm font-medium w-full">Phòng {`[${data.roomId}] ${data.roomName}`}</p>
         <p className="text-sm font-medium w-full">
           Tổng:{" "}
           {data.totalMoney

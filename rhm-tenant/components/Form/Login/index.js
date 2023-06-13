@@ -26,21 +26,24 @@ export default function LoginForm() {
         code: code,
       },
     })
-      .then((res) => {
+      .then(async (res) => {
         toast.success("Xác thực thành công");
-        getInfo();
+        await getInfo();
+        router.replace("/invoice");
       })
       .catch((err) => {
         console.log(err);
         toast.error("Lỗi! " + err?.data?.message);
       });
-      setLoadingAuthUser(false);
+    setLoadingAuthUser(false);
   };
   const handleAccountLogin = async (value) => {
     await login({
       username: value.username,
       password: value.password,
     });
+    await getInfo();
+    router.replace("/invoice");
   };
   useEffect(() => {
     setLoadingAuthUser(false);
