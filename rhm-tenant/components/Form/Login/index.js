@@ -75,7 +75,7 @@ export default function LoginForm() {
               <Input
                 type="password"
                 className="rounded-lg bg-secondary py-1.5 px-2 text-xs font-medium w-full text-primary"
-                placeholder="Mắc định là ngày sinh (DDMMYYY)"
+                placeholder="Mắc định là ngày sinh (DDMMYYYY)"
               />
             </Form.Item>
           </div>
@@ -96,6 +96,7 @@ export default function LoginForm() {
           Đăng nhập bằng Google
         </button>
       </div>
+      <p className="text-right text-xs text-white w-full">Hỗ trợ: 0987654321</p>
     </div>
   );
 }

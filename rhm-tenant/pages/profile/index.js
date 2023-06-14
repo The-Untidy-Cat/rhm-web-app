@@ -59,11 +59,11 @@ const ContractCard = ({ data }) => {
             ""}
         </p>
         <p className="text-sm font-medium w-full">
-          Người đại diện: <br /> [{data.representativeId || ""}]
+          Người đại diện: [{data.representativeId || ""}]{" "}
           {data.representativeName || ""}
         </p>
         <p className="text-sm font-medium w-full">
-          Phòng: <br /> [{data.roomId || ""}]{data.roomName || ""}
+          Phòng: [{data.roomId || ""}]{" "}{data.roomName || ""}
         </p>
         <p className="text-sm font-medium w-full">
           Trạng thái: {data.statusName || ""}

@@ -19,8 +19,8 @@ module.exports = {
     try {
       return res
         .clearCookie("access_token", {
-          sameSite: "none",
-          secure: true,
+          sameSite: "Lax",
+          secure: process.env.NODE_ENV === "production" ? true : false,
           httpOnly: true,
         })
         .status(200)

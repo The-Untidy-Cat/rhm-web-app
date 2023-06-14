@@ -48,7 +48,7 @@ const MobileLayout = ({ children = null, title = null }) => {
         <title>{title}</title>
       </Head>
 
-      <div className="absolute mx-auto left-0 right-0 flex h-full w-screen max-w-md flex-col items-center justify-start align-start">
+      <div className="absolute mx-auto left-0 right-0 flex min-h-screen h-full w-screen max-w-md flex-col items-center justify-start align-start">
         <div className="flex justify-between align-center items-center px-3 w-full mt-3 h-20">
           <h1 className="font-bold text-primary text-2xl">{title}</h1>
           <FaUserCircle
@@ -79,11 +79,11 @@ const ViewDetailLayout = ({
       <Head>
         <title>{title}</title>
       </Head>
-      <div className="absolute mx-auto left-0 right-0 flex h-full w-screen max-w-md flex-col items-center justify-start align-start">
-        <div className="flex justify-start align-center items-center px-3 gap-2 w-full mt-1 h-20">
+      <div className="absolute mx-auto left-0 right-0 flex min-h-screen h-full w-screen max-w-md flex-col items-center justify-start align-start">
+        <div className="flex justify-start align-center items-center px-3 gap-2 w-full mt-1 h-16">
           <IoIosArrowBack
             onClick={() => {
-              if (backTo) router.back();
+              if (!backTo) router.back();
               else router.push(backTo);
             }}
             className="text-2xl text-primary p-0 cursor-pointer"

@@ -46,8 +46,8 @@ module.exports = {
       var { accessToken } = req.token;
       if (!accessToken) throw new Error("Access Token is missing");
       await res.cookie("access_token", accessToken, {
-        sameSite: "none",
-        secure: true,
+        sameSite: "Lax",
+        secure: process.env.NODE_ENV === "production" ? true : false,
         httpOnly: true,
         maxAge: 3600000 * 24,
       });
