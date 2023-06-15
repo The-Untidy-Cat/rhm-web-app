@@ -2,7 +2,6 @@
   "theme_color": "#769FCD",
   "background_color": "#F7FBFC",
   "display": "standalone",
-  "scope": "/invoice",
   "start_url": "/invoice",
   "name": "RHM | Kh\u00e1ch thu\u00ea",
   "short_name": "RHM | Kh\u00e1ch thu\u00ea",
