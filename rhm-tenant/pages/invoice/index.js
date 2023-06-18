@@ -9,7 +9,7 @@ const Card = ({ data }) => {
   const router = useRouter();
   return (
     <div className="flex justify-center align-center items-center w-full bg-bg-base shadow rounded-lg h-28 p-0" onClick={()=>router.push(`/invoice/${data.id}`)}>
-      <div className="flex flex-col justify-start align-center w-[70rem] p-2 h-fit">
+      <div className="flex flex-col justify-start align-center w-full p-2 h-fit">
         <p className="text-lg font-bold w-full">Tháng {data.month || ""}/{data.year || ""}</p>
         <p className="text-sm font-medium w-full">Phòng {`[${data.roomId}] ${data.roomName}`}</p>
         <p className="text-sm font-medium w-full">
@@ -26,12 +26,12 @@ const Card = ({ data }) => {
         </p>
       </div>
       {data.statusId == 1 && (
-        <div className="flex flex-col justify-center align-center items-center w-full p-5 bg-success h-full rounded-r-lg uppercase text-white text-center text-sm font-semibold">
+        <div className="flex flex-col justify-center align-center items-center w-[6rem] p-5 bg-success h-full rounded-r-lg uppercase text-white text-center text-sm font-semibold shrink-0">
           ĐÃ THANH TOÁN
         </div>
       )}
       {data.statusId == 0 && (
-        <div className="flex flex-col justify-center align-center items-center w-full p-5 bg-error h-full rounded-r-lg uppercase text-white text-center text-sm font-semibold">
+        <div className="flex flex-col justify-center align-center items-center w-[6rem] p-5 bg-error h-full rounded-r-lg uppercase text-white text-center text-sm font-semibold shrink-0">
           CHƯA THANH TOÁN
         </div>
       )}

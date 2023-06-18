@@ -37,13 +37,16 @@ export default function NewTicket() {
         <p className="text-sm font-medium w-full">Nội dung hỗ trợ</p>
         <Form.Item
           name="description"
-          rules={[{ required: true, message: "Bắt buộc!" }]}
+          rules={[
+            { required: true, message: "Bắt buộc!" },
+            { max: 150, message: "Tối đa 150 kí tự!" },
+          ]}
         >
           <TextArea
             className="w-full border rounded-lg p-2 text-sm"
             required
-            maxLength={48}
             autoSize
+            maxLength={150}
             placeholder="Tối đa 48 kí tự"
           />
         </Form.Item>
